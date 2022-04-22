@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		542167322813552C00C885A3 /* RuheApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542167312813552C00C885A3 /* RuheApp.swift */; };
-		542167342813552C00C885A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542167332813552C00C885A3 /* ContentView.swift */; };
+		542167342813552C00C885A3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542167332813552C00C885A3 /* MainView.swift */; };
 		542167362813553300C885A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542167352813553300C885A3 /* Assets.xcassets */; };
 		542167392813553300C885A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542167382813553300C885A3 /* Preview Assets.xcassets */; };
 		542167432813553400C885A3 /* RuheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542167422813553400C885A3 /* RuheTests.swift */; };
 		5421674D2813553400C885A3 /* RuheUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5421674C2813553400C885A3 /* RuheUITests.swift */; };
 		5421674F2813553400C885A3 /* RuheUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5421674E2813553400C885A3 /* RuheUITestsLaunchTests.swift */; };
+		5421675C2813574700C885A3 /* BreathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5421675B2813574700C885A3 /* BreathView.swift */; };
+		5421675E2813576000C885A3 /* BubblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5421675D2813576000C885A3 /* BubblesView.swift */; };
+		542167602813577200C885A3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5421675F2813577200C885A3 /* ChatView.swift */; };
+		542167622813579500C885A3 /* ContentMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542167612813579500C885A3 /* ContentMessageView.swift */; };
+		54216764281357A900C885A3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54216763281357A900C885A3 /* Message.swift */; };
+		5421676728136D2D00C885A3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5421676628136D2D00C885A3 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +42,7 @@
 /* Begin PBXFileReference section */
 		5421672E2813552C00C885A3 /* Ruhe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ruhe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542167312813552C00C885A3 /* RuheApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuheApp.swift; sourceTree = "<group>"; };
-		542167332813552C00C885A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		542167332813552C00C885A3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		542167352813553300C885A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		542167382813553300C885A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5421673E2813553400C885A3 /* RuheTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RuheTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +50,12 @@
 		542167482813553400C885A3 /* RuheUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RuheUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5421674C2813553400C885A3 /* RuheUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuheUITests.swift; sourceTree = "<group>"; };
 		5421674E2813553400C885A3 /* RuheUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuheUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5421675B2813574700C885A3 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
+		5421675D2813576000C885A3 /* BubblesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesView.swift; sourceTree = "<group>"; };
+		5421675F2813577200C885A3 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		542167612813579500C885A3 /* ContentMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMessageView.swift; sourceTree = "<group>"; };
+		54216763281357A900C885A3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		5421676628136D2D00C885A3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				542167312813552C00C885A3 /* RuheApp.swift */,
-				542167332813552C00C885A3 /* ContentView.swift */,
+				5421676628136D2D00C885A3 /* Extensions.swift */,
+				542167652813599B00C885A3 /* Views */,
+				54216763281357A900C885A3 /* Message.swift */,
 				542167352813553300C885A3 /* Assets.xcassets */,
 				542167372813553300C885A3 /* Preview Content */,
 			);
@@ -125,6 +139,18 @@
 				5421674E2813553400C885A3 /* RuheUITestsLaunchTests.swift */,
 			);
 			path = RuheUITests;
+			sourceTree = "<group>";
+		};
+		542167652813599B00C885A3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				542167332813552C00C885A3 /* MainView.swift */,
+				5421675B2813574700C885A3 /* BreathView.swift */,
+				5421675D2813576000C885A3 /* BubblesView.swift */,
+				5421675F2813577200C885A3 /* ChatView.swift */,
+				542167612813579500C885A3 /* ContentMessageView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +283,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				542167342813552C00C885A3 /* ContentView.swift in Sources */,
+				542167622813579500C885A3 /* ContentMessageView.swift in Sources */,
+				542167342813552C00C885A3 /* MainView.swift in Sources */,
+				5421675C2813574700C885A3 /* BreathView.swift in Sources */,
+				5421676728136D2D00C885A3 /* Extensions.swift in Sources */,
+				542167602813577200C885A3 /* ChatView.swift in Sources */,
+				5421675E2813576000C885A3 /* BubblesView.swift in Sources */,
 				542167322813552C00C885A3 /* RuheApp.swift in Sources */,
+				54216764281357A900C885A3 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

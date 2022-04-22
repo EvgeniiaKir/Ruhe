@@ -2,7 +2,7 @@
 //  RuheApp.swift
 //  Ruhe
 //
-//  Created by Евгения Колдышева on 22.04.2022.
+//  Created by Evgeniia Kiriushina on 22.04.2022.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct RuheApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
