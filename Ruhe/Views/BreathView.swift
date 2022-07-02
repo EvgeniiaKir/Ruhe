@@ -11,13 +11,14 @@ struct BreathView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var buttonText: String = "Go!"
     @State private var animationAmount = 1.0
-    @State private var animationColor = Color(red: 102/255, green: 154/255, blue: 154/255)
     @State private var animate = false
     @State private var breatheIn = false
     @State private var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
-    
+    @Binding var lightColor: Color?
+    @Binding var basicColor: Color?
+
     var body: some View {
-        Color(red: 148/255, green: 192/255, blue: 194/255)
+        lightColor
             .ignoresSafeArea()
             .overlay(
                 ZStack {
@@ -46,10 +47,10 @@ struct BreathView: View {
                         Spacer()
                         ZStack {
                             ZStack {
-                                Circle().fill(animationColor.opacity(0.25)).frame(width: 190, height: 190).scaleEffect(self.animate ? 1.8 : 0.9)
-                                Circle().fill(animationColor.opacity(0.35)).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.4 : 0.9)
-                                Circle().fill(animationColor.opacity(0.45)).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.7 : 0.9)
-                                Circle().fill(animationColor).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.2 : 0.9)
+                                Circle().fill(basicColor!.opacity(0.25)).frame(width: 190, height: 190).scaleEffect(self.animate ? 1.8 : 0.9)
+                                Circle().fill(basicColor!.opacity(0.35)).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.4 : 0.9)
+                                Circle().fill(basicColor!.opacity(0.45)).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.7 : 0.9)
+                                Circle().fill(basicColor!).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.2 : 0.9)
                             }
                             .animation(.easeInOut(duration: 4.95).repeat(while: animate), value: animate)
                             
@@ -73,7 +74,7 @@ struct BreathView: View {
                                     .fontWeight(.bold)
                             }
                             .frame(width: 230, height: 160, alignment: .center)
-                            .background(Color(red: 148/255, green: 192/255, blue: 194/255))
+                            .background(lightColor)
                             .clipShape(Circle())
                             .onAppear() {
                                 self.stopTimer()
@@ -113,8 +114,8 @@ extension Animation {
     }
 }
 
-struct BreathView_Previews: PreviewProvider {
-    static var previews: some View {
-        BreathView()
-    }
-}
+//struct BreathView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BreathView()
+//    }
+//}

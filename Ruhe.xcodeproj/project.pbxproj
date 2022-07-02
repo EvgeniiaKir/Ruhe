@@ -20,6 +20,7 @@
 		542167622813579500C885A3 /* ContentMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542167612813579500C885A3 /* ContentMessageView.swift */; };
 		54216764281357A900C885A3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54216763281357A900C885A3 /* Message.swift */; };
 		5421676728136D2D00C885A3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5421676628136D2D00C885A3 /* Extensions.swift */; };
+		5476227E285F41160057116A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5476227D285F41160057116A /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		542167612813579500C885A3 /* ContentMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMessageView.swift; sourceTree = "<group>"; };
 		54216763281357A900C885A3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5421676628136D2D00C885A3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5476227D285F41160057116A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +110,8 @@
 			children = (
 				542167312813552C00C885A3 /* RuheApp.swift */,
 				5421676628136D2D00C885A3 /* Extensions.swift */,
-				542167652813599B00C885A3 /* Views */,
 				54216763281357A900C885A3 /* Message.swift */,
+				542167652813599B00C885A3 /* Views */,
 				542167352813553300C885A3 /* Assets.xcassets */,
 				542167372813553300C885A3 /* Preview Content */,
 			);
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				542167332813552C00C885A3 /* MainView.swift */,
+				5476227D285F41160057116A /* SettingsView.swift */,
 				5421675B2813574700C885A3 /* BreathView.swift */,
 				5421675D2813576000C885A3 /* BubblesView.swift */,
 				5421675F2813577200C885A3 /* ChatView.swift */,
@@ -286,6 +289,7 @@
 				542167622813579500C885A3 /* ContentMessageView.swift in Sources */,
 				542167342813552C00C885A3 /* MainView.swift in Sources */,
 				5421675C2813574700C885A3 /* BreathView.swift in Sources */,
+				5476227E285F41160057116A /* SettingsView.swift in Sources */,
 				5421676728136D2D00C885A3 /* Extensions.swift in Sources */,
 				542167602813577200C885A3 /* ChatView.swift in Sources */,
 				5421675E2813576000C885A3 /* BubblesView.swift in Sources */,
@@ -377,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -431,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -456,7 +460,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,7 +470,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -485,7 +489,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -495,7 +499,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

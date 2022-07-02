@@ -11,50 +11,75 @@ struct MainView: View {
     @State private var openChat: Bool = false
     @State private var openBreath: Bool = false
     @State private var openBubbles: Bool = false
-    
+    @State private var openSettings: Bool = false
+    @Binding var lightColor: Color?
+    @Binding var basicColor: Color?
+    @Binding var darkColor: Color?
+
     var body: some View {
-        Color(red: 148/255, green: 192/255, blue: 194/255)
+        lightColor
             .ignoresSafeArea()
             .overlay(
-                VStack {
-                    Text("Let's have a break")
-                        .foregroundColor(.white)
-                        .font(.system(size: 37))
-                        .fontWeight(.bold)
-                        .padding(.top, -60)
-                    HStack {
+                ZStack {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Button {
+                                self.openSettings = true
+                            } label: {
+                                Image(systemName: "gearshape")
+                                    .font(.system(size: 35))
+                                    .foregroundColor(.white)
+                            }
+                            .padding(.trailing, 15)
+                            .padding(.top, 15)
+                            .fullScreenCover(isPresented: $openSettings, content: {
+                                SettingsView(lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
+                            })
+                        }
+                        Spacer()
+                    }
+                        
+                    VStack(spacing: 30) {
+                        Text("Let's have a break")
+                            .foregroundColor(.white)
+                            .font(.system(size: 37))
+                            .fontWeight(.bold)
+                            .padding(.top, -60)
+                        HStack {
+                            Button {
+                                self.openChat = true
+                            } label: {
+                                Image(systemName: "bubble.left.and.bubble.right")
+                                    .font(.system(size: 60))
+                            }
+                            .buttonStyle(MainButton())
+                            .fullScreenCover(isPresented: $openChat, content: {
+                                ChatView(lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
+                            })
+                            Button {
+                                self.openBreath = true
+                            } label: {
+                                Image(systemName: "lungs")
+                                    .font(.system(size: 65))
+                            }
+                            .buttonStyle(MainButton())
+                            .fullScreenCover(isPresented: $openBreath, content: {
+                                BreathView(lightColor: $lightColor, basicColor: $basicColor)
+                            })
+                        }
+                        .padding(.top, 90)
                         Button {
-                            self.openChat = true
+                            self.openBubbles = true
                         } label: {
-                            Image(systemName: "bubble.left.and.bubble.right")
-                                .font(.system(size: 60))
+                            Image(systemName: "circle.hexagonpath")
+                                .font(.system(size: 70))
                         }
                         .buttonStyle(MainButton())
-                        .fullScreenCover(isPresented: $openChat, content: {
-                            ChatView()
-                        })
-                        Button {
-                            self.openBreath = true
-                        } label: {
-                            Image(systemName: "lungs")
-                                .font(.system(size: 65))
-                        }
-                        .buttonStyle(MainButton())
-                        .fullScreenCover(isPresented: $openBreath, content: {
-                            BreathView()
+                        .fullScreenCover(isPresented: $openBubbles, content: {
+                            BubblesView(lightColor: $lightColor, basicColor: $basicColor)
                         })
                     }
-                    .padding(.top, 90)
-                    Button {
-                        self.openBubbles = true
-                    } label: {
-                        Image(systemName: "circle.hexagonpath")
-                            .font(.system(size: 70))
-                    }
-                    .buttonStyle(MainButton())
-                    .fullScreenCover(isPresented: $openBubbles, content: {
-                        BubblesView()
-                    })
                 })
     }
 }
@@ -71,8 +96,8 @@ struct MainButton: ButtonStyle {
 }
 
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
+//struct MainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainView(backColor: $backColor)
+//    }
+//}

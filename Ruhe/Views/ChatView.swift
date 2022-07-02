@@ -23,9 +23,13 @@ struct ChatView: View {
         "Let's dig deeper, why do you think like that?",
         "I feel you. Why does it bother you so much?"
     ]
-    
+    @Binding var lightColor: Color?
+    @Binding var basicColor: Color?
+    @Binding var darkColor: Color?
+
     var body: some View {
-        Color(red: 148/255, green: 192/255, blue: 194/255)        .ignoresSafeArea()
+        lightColor
+            .ignoresSafeArea()
             .overlay(
                 ZStack {
                     VStack {
@@ -53,7 +57,7 @@ struct ChatView: View {
                             ScrollViewReader{ value in
                                 VStack(spacing: 20) {
                                     ForEach(messages, id: \.self) { msg in
-                                        ContentMessageView(contentMessage: msg.content, isUser: msg.isUser)
+                                        ContentMessageView(contentMessage: msg.content, isUser: msg.isUser, basicColor: $basicColor, darkColor: $darkColor)
                                     }
                                     Spacer()
                                         .id("anID")
@@ -72,21 +76,43 @@ struct ChatView: View {
                                 .stroke(.white, lineWidth: 5)
                         )
                         HStack(spacing: 5) {
-                            TextField("Type here...", text: $inputText)
-                                .frame(width: 290)
-                                .disableAutocorrection(false)
-                                .textFieldStyle(.roundedBorder)
-                                .foregroundColor(Color(red: 41/255, green: 111/255, blue: 106/255))
-                                .padding(.bottom, keyboardHeight)
-                                .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
-                                .onSubmit {
+                            if #available(iOS 15.0, *) {
+                                TextField("Type here...", text: $inputText)
+                                    .frame(width: 290)
+                                    .disableAutocorrection(false)
+                                    .textFieldStyle(.roundedBorder)
+                                    .foregroundColor(basicColor)
+                                    .padding(.bottom, keyboardHeight)
+                                    .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
+                                    .onSubmit {
+                                        if !inputText.isEmpty {
+                                            userMsg = inputText
+                                            inputText = ""
+                                            sendMessage()
+                                        }
+                                    }
+                                    .submitLabel(.done)
+                            } else {
+                                TextField("Type here...", text: $inputText)
+                                    .frame(width: 250)
+                                    .disableAutocorrection(false)
+                                    .textFieldStyle(.roundedBorder)
+                                    .foregroundColor(basicColor)
+                                    .padding(.bottom, keyboardHeight)
+                                    .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
+                                Button {
                                     if !inputText.isEmpty {
                                         userMsg = inputText
                                         inputText = ""
                                         sendMessage()
                                     }
+                                } label: {
+                                    Image(systemName: "arrow.up.circle")
+                                        .font(.system(size: 35).weight(.bold))
+                                        .foregroundColor(.white)
                                 }
-                                .submitLabel(.done)
+                                .padding(.leading, 5)
+                            }
                         }
                     }
                 })
@@ -101,8 +127,8 @@ struct ChatView: View {
     }
 }
 
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView()
-    }
-}
+//struct ChatView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatView()
+//    }
+//}

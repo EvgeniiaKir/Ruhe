@@ -15,9 +15,11 @@ struct BubblesView: View {
     @State private var audioAsset = "popped"
     @State private var bubblesArray: [[String]] = Array(repeating: Array(repeating: "fullBubble", count: 6), count: 8)
     private let screamsArray: [String] = ["screamOne", "screamTwo", "screamThree"]
-    
+    @Binding var lightColor: Color?
+    @Binding var basicColor: Color?
+
     var body: some View {
-        Color(red: 148/255, green: 192/255, blue: 194/255)
+        lightColor
             .ignoresSafeArea()
             .overlay(
                 ZStack {
@@ -33,6 +35,15 @@ struct BubblesView: View {
                             .padding(.leading, 15)
                             .padding(.top, 15)
                             Spacer()
+                            Button {
+                                bubblesArray = Array(repeating: Array(repeating: "fullBubble", count: 6), count: 8)
+                            } label: {
+                                Image(systemName: "arrow.clockwise.circle")
+                                    .font(.system(size: 40))
+                                    .foregroundColor(.white)
+                            }
+                            .padding(.trailing, 15)
+                            .padding(.top, 15)
                         }
                         Spacer()
                     }
@@ -48,7 +59,7 @@ struct BubblesView: View {
                             .fontWeight(.bold)
                             .padding(.top, -10)
                         Toggle ("", isOn: $isFun)
-                            .toggleStyle(SwitchToggleStyle(tint: Color(red: 102/255, green: 154/255, blue: 154/255)))
+                            .toggleStyle(SwitchToggleStyle(tint: basicColor!))
                             .frame(width: 50, height: 30, alignment: .center)
                             .padding(.top, -20)
                         VStack {
@@ -94,8 +105,8 @@ struct BubblesView: View {
     }
 }
 
-struct BubblesView_Previews: PreviewProvider {
-    static var previews: some View {
-        BubblesView()
-    }
-}
+//struct BubblesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BubblesView()
+//    }
+//}
