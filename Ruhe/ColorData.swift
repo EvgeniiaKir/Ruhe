@@ -32,27 +32,22 @@ class ColorData {
               let basicArray = userDefaults.object(forKey: BASIC_COLOR_KEY) as? [CGFloat],
               let darkArray = userDefaults.object(forKey: DARK_COLOR_KEY) as? [CGFloat] else { return Color.mint }
 
-        let lightColor = Color(.sRGB,
-                          red: lightArray[0],
-                          green: lightArray[1],
-                          blue: lightArray[2],
-                          opacity: lightArray[3])
-        
-        let basicColor = Color(.sRGB,
-                          red: basicArray[0],
-                          green: basicArray[1],
-                          blue: basicArray[2],
-                          opacity: basicArray[3])
-        
-        let darkColor = Color(.sRGB,
-                          red: darkArray[0],
-                          green: darkArray[1],
-                          blue: darkArray[2],
-                          opacity: darkArray[3])
+        let lightColor = getColor(array: lightArray)
+        let basicColor = getColor(array: basicArray)
+        let darkColor = getColor(array: darkArray)
         
         let colorsArray = ["light": lightColor, "basic": basicColor, "dark": darkColor]
         
         print("Colours loaded!")
         return colorsArray
+    }
+    
+    func getColor(array: [CGFloat]) -> Color {
+        let color = Color(.sRGB,
+                          red: array[0],
+                          green: array[1],
+                          blue: array[2],
+                          opacity: array[3])
+        return color
     }
 }
