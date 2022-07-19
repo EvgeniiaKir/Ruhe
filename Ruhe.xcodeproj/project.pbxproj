@@ -21,6 +21,7 @@
 		54216764281357A900C885A3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54216763281357A900C885A3 /* Message.swift */; };
 		5421676728136D2D00C885A3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5421676628136D2D00C885A3 /* Extensions.swift */; };
 		5476227E285F41160057116A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5476227D285F41160057116A /* SettingsView.swift */; };
+		54A3C4302870BA440004E047 /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A3C42F2870BA440004E047 /* ColorData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		54216763281357A900C885A3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5421676628136D2D00C885A3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5476227D285F41160057116A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		54A3C42F2870BA440004E047 /* ColorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				542167312813552C00C885A3 /* RuheApp.swift */,
 				5421676628136D2D00C885A3 /* Extensions.swift */,
 				54216763281357A900C885A3 /* Message.swift */,
+				54A3C42F2870BA440004E047 /* ColorData.swift */,
 				542167652813599B00C885A3 /* Views */,
 				542167352813553300C885A3 /* Assets.xcassets */,
 				542167372813553300C885A3 /* Preview Content */,
@@ -293,6 +296,7 @@
 				5421676728136D2D00C885A3 /* Extensions.swift in Sources */,
 				542167602813577200C885A3 /* ChatView.swift in Sources */,
 				5421675E2813576000C885A3 /* BubblesView.swift in Sources */,
+				54A3C4302870BA440004E047 /* ColorData.swift in Sources */,
 				542167322813552C00C885A3 /* RuheApp.swift in Sources */,
 				54216764281357A900C885A3 /* Message.swift in Sources */,
 			);

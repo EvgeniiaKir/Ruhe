@@ -9,9 +9,9 @@ import SwiftUI
 
 @main
 struct RuheApp: App {
+    @State var lightColor = Color.mint["light"]
     @State var basicColor = Color.mint["basic"]
     @State var darkColor = Color.mint["dark"]
-    @State var lightColor = Color.mint["light"]
 
     var body: some Scene {
         WindowGroup {

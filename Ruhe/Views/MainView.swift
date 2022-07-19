@@ -15,6 +15,7 @@ struct MainView: View {
     @Binding var lightColor: Color?
     @Binding var basicColor: Color?
     @Binding var darkColor: Color?
+    var colorData = ColorData()
 
     var body: some View {
         lightColor
@@ -80,7 +81,13 @@ struct MainView: View {
                             BubblesView(lightColor: $lightColor, basicColor: $basicColor)
                         })
                     }
-                })
+                }
+                    .onAppear{
+                        let colors = colorData.loadColors()
+                        lightColor = colors["light"]
+                        basicColor = colors["basic"]
+                        darkColor = colors["dark"]
+                    })
     }
 }
 

@@ -14,6 +14,7 @@ struct SettingsView: View {
     @Binding var lightColor: Color?
     @Binding var basicColor: Color?
     @Binding var darkColor: Color?
+    var colorData = ColorData()
 
     var body: some View {
         lightColor
@@ -44,9 +45,11 @@ struct SettingsView: View {
                         HStack {
                             ForEach(0..<colorsArray.endIndex, id:\.self) { item in
                                     Button {
-                                        lightColor = colorsArray[item]["light"]
-                                        basicColor = colorsArray[item]["basic"]
-                                        darkColor = colorsArray[item]["dark"]
+                                        colorData.saveColors(lightColor: colorsArray[item]["light"]!, basicColor: colorsArray[item]["basic"]!, darkColor: colorsArray[item]["dark"]!)
+                                        let colors = colorData.loadColors()
+                                        lightColor = colors["light"]
+                                        basicColor = colors["basic"]
+                                        darkColor = colors["dark"]
                                     } label: {
                                         Image(systemName: "circle")
                                             .font(.system(size: 40))
@@ -58,8 +61,8 @@ struct SettingsView: View {
                             }
                         }
                     }
-                })
-    }
+                }
+    )}
 }
 
 //struct SettingsView_Previews: PreviewProvider {
