@@ -17,7 +17,7 @@ struct SettingsView: View {
     var colorData = ColorData()
 
     var body: some View {
-        lightColor
+        basicColor
             .ignoresSafeArea()
             .overlay(
                 ZStack {

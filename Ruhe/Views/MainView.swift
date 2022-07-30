@@ -66,7 +66,7 @@ struct MainView: View {
                             }
                             .buttonStyle(MainButton())
                             .fullScreenCover(isPresented: $openBreath, content: {
-                                BreathView(lightColor: $lightColor, basicColor: $basicColor)
+                                BreathView(lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
                             })
                         }
                         .padding(.top, 90)
@@ -78,7 +78,7 @@ struct MainView: View {
                         }
                         .buttonStyle(MainButton())
                         .fullScreenCover(isPresented: $openBubbles, content: {
-                            BubblesView(lightColor: $lightColor, basicColor: $basicColor)
+                            BubblesView(lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
                         })
                     }
                 }

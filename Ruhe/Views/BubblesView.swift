@@ -17,9 +17,10 @@ struct BubblesView: View {
     private let screamsArray: [String] = ["screamOne", "screamTwo", "screamThree"]
     @Binding var lightColor: Color?
     @Binding var basicColor: Color?
-
+    @Binding var darkColor: Color?
+    
     var body: some View {
-        lightColor
+        basicColor
             .ignoresSafeArea()
             .overlay(
                 ZStack {
@@ -59,34 +60,34 @@ struct BubblesView: View {
                             .fontWeight(.bold)
                             .padding(.top, -10)
                         Toggle ("", isOn: $isFun)
-                            .toggleStyle(SwitchToggleStyle(tint: basicColor!))
+                            .toggleStyle(SwitchToggleStyle(tint: darkColor!))
                             .frame(width: 50, height: 30, alignment: .center)
                             .padding(.top, -20)
-                        VStack {
-                            ForEach(0..<bubblesArray.endIndex, id:\.self) { rowIndex in
-                                HStack {
-                                    ForEach(0..<bubblesArray[rowIndex].endIndex, id:\.self) { columnImdex in
-                                        let imageName = bubblesArray[rowIndex][columnImdex]
-                                        Image(imageName)
-                                            .resizable()
-                                            .frame(width: 45, height: 45, alignment: .center)
-                                            .onTapGesture {
-                                                if imageName != "poppedBubble"{
-                                                    audioAsset = isFun ? screamsArray.randomElement()! : "popped"
-                                                    playAudioAsset(audioAsset)
-                                                    bubblesArray[rowIndex].remove(at: columnImdex)
-                                                    bubblesArray[rowIndex].insert("poppedBubble", at: columnImdex)
+                        ZStack{
+                            lightColor
+                                .cornerRadius(20)
+                            VStack {
+                                ForEach(0..<bubblesArray.endIndex, id:\.self) { rowIndex in
+                                    HStack {
+                                        ForEach(0..<bubblesArray[rowIndex].endIndex, id:\.self) { columnImdex in
+                                            let imageName = bubblesArray[rowIndex][columnImdex]
+                                            Image(imageName)
+                                                .resizable()
+                                                .frame(width: 45, height: 45, alignment: .center)
+                                                .onTapGesture {
+                                                    if imageName != "poppedBubble"{
+                                                        audioAsset = isFun ? screamsArray.randomElement()! : "popped"
+                                                        playAudioAsset(audioAsset)
+                                                        bubblesArray[rowIndex].remove(at: columnImdex)
+                                                        bubblesArray[rowIndex].insert("poppedBubble", at: columnImdex)
+                                                    }
                                                 }
-                                            }
+                                        }
                                     }
                                 }
                             }
                         }
                         .frame(width: 330, height: 430)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(.white, lineWidth: 5)
-                        )
                     }
                 })
     }

@@ -26,9 +26,9 @@ struct ChatView: View {
     @Binding var lightColor: Color?
     @Binding var basicColor: Color?
     @Binding var darkColor: Color?
-
+    
     var body: some View {
-        lightColor
+        basicColor
             .ignoresSafeArea()
             .overlay(
                 ZStack {
@@ -52,68 +52,81 @@ struct ChatView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 40))
                             .fontWeight(.bold)
-                            .padding()
-                        ScrollView {
-                            ScrollViewReader{ value in
-                                VStack(spacing: 20) {
-                                    ForEach(messages, id: \.self) { msg in
-                                        ContentMessageView(contentMessage: msg.content, isUser: msg.isUser, basicColor: $basicColor, darkColor: $darkColor)
+                            .padding(.top, 10)
+                        ZStack{
+                            lightColor
+                                .cornerRadius(20)
+                            ScrollView {
+                                ScrollViewReader{ value in
+                                    VStack(spacing: 20) {
+                                        ForEach(messages, id: \.self) { msg in
+                                            ContentMessageView(contentMessage: msg.content, isUser: msg.isUser, basicColor: $basicColor, darkColor: $darkColor)
+                                        }
+                                        Spacer()
+                                            .id("anID")
                                     }
-                                    Spacer()
-                                        .id("anID")
+                                    .padding()
+                                    .onChange(of: self.messages.count, perform: { count in
+                                        withAnimation {
+                                            value.scrollTo("anID")
+                                        }
+                                    })
                                 }
-                                .padding()
-                                .onChange(of: self.messages.count, perform: { count in
-                                    withAnimation {
-                                        value.scrollTo("anID")
-                                    }
-                                })
                             }
                         }
                         .frame(width: 330, height: 510)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(.white, lineWidth: 5)
-                        )
                         HStack(spacing: 5) {
                             if #available(iOS 15.0, *) {
-                                TextField("Type here...", text: $inputText)
-                                    .frame(width: 290)
-                                    .disableAutocorrection(false)
-                                    .textFieldStyle(.roundedBorder)
-                                    .foregroundColor(basicColor)
-                                    .padding(.bottom, keyboardHeight)
-                                    .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
-                                    .onSubmit {
-                                        if !inputText.isEmpty {
-                                            userMsg = inputText
-                                            inputText = ""
-                                            sendMessage()
+                                ZStack {
+                                    lightColor
+                                        .cornerRadius(10)
+                                    TextField("Type here...", text: $inputText)
+                                        .frame(width: 290)
+                                        .disableAutocorrection(false)
+                                        .foregroundColor(darkColor)
+                                        .background(Color.clear)
+                                        .padding(.leading, 5)
+                                        .onSubmit {
+                                            if !inputText.isEmpty {
+                                                userMsg = inputText
+                                                inputText = ""
+                                                sendMessage()
+                                            }
                                         }
-                                    }
-                                    .submitLabel(.done)
+                                        .submitLabel(.done)
+                                }
+                                .frame(width: 290, height: 35)
                             } else {
-                                TextField("Type here...", text: $inputText)
-                                    .frame(width: 250)
-                                    .disableAutocorrection(false)
-                                    .textFieldStyle(.roundedBorder)
-                                    .foregroundColor(basicColor)
-                                    .padding(.bottom, keyboardHeight)
-                                    .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
+                                ZStack {
+                                    lightColor
+                                        .cornerRadius(10)
+                                    TextField("Type here...", text: $inputText)
+                                        .frame(width: 250)
+                                        .disableAutocorrection(false)
+                                        .foregroundColor(darkColor)
+                                        .background(Color.clear)
+                                        .padding(.leading, 5)
+                                }
+                                .frame(width: 250, height: 35)
                                 Button {
                                     if !inputText.isEmpty {
                                         userMsg = inputText
                                         inputText = ""
                                         sendMessage()
+                                        DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                                        }
                                     }
                                 } label: {
                                     Image(systemName: "arrow.up.circle")
-                                        .font(.system(size: 35).weight(.bold))
+                                        .font(.system(size: 35))
                                         .foregroundColor(.white)
                                 }
                                 .padding(.leading, 5)
                             }
                         }
+                        .padding(.bottom, keyboardHeight)
+                        .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
                     }
                 })
     }
