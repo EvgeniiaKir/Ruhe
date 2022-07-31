@@ -15,7 +15,7 @@ struct ContentMessageView: View {
 
     var body: some View {
         HStack {
-            if !isUser {
+            if isUser {
                 Spacer()
             }
             Text(contentMessage)
@@ -24,7 +24,7 @@ struct ContentMessageView: View {
                 .foregroundColor(Color.white)
                 .background(isUser ? basicColor : darkColor)
                 .cornerRadius(10)
-            if isUser {
+            if !isUser {
                 Spacer()
             }
         }

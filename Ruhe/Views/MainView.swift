@@ -85,6 +85,7 @@ struct MainView: View {
                 }
                     .onAppear{
                         let colors = colorData.loadColors()
+                        extraLightColor = colors["extraLight"]
                         lightColor = colors["light"]
                         basicColor = colors["basic"]
                         darkColor = colors["dark"]
