@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State private var colorsArray = [Color.mint, Color.purple, Color.green, Color.orange, Color.anotherGreen]
+    @State private var colorsArray = [Color.coral, Color.orange, Color.green, Color.lazur, Color.blue, Color.purple]
     @Binding var extraLightColor: Color?
     @Binding var lightColor: Color?
     @Binding var basicColor: Color?
