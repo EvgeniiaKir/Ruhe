@@ -15,12 +15,13 @@ struct BubblesView: View {
     @State private var audioAsset = "popped"
     @State private var bubblesArray: [[String]] = Array(repeating: Array(repeating: "fullBubble", count: 6), count: 8)
     private let screamsArray: [String] = ["screamOne", "screamTwo", "screamThree"]
+    @Binding var extraLightColor: Color?
     @Binding var lightColor: Color?
     @Binding var basicColor: Color?
     @Binding var darkColor: Color?
     
     var body: some View {
-        basicColor
+        lightColor
             .ignoresSafeArea()
             .overlay(
                 ZStack {
@@ -60,11 +61,11 @@ struct BubblesView: View {
                             .fontWeight(.bold)
                             .padding(.top, -10)
                         Toggle ("", isOn: $isFun)
-                            .toggleStyle(SwitchToggleStyle(tint: darkColor!))
+                            .toggleStyle(SwitchToggleStyle(tint: basicColor!))
                             .frame(width: 50, height: 30, alignment: .center)
                             .padding(.top, -20)
                         ZStack{
-                            lightColor
+                            extraLightColor
                                 .cornerRadius(20)
                             VStack {
                                 ForEach(0..<bubblesArray.endIndex, id:\.self) { rowIndex in

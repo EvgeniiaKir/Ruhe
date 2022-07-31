@@ -14,12 +14,13 @@ struct BreathView: View {
     @State private var animate = false
     @State private var breatheIn = false
     @State private var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    @Binding var extraLightColor: Color?
     @Binding var lightColor: Color?
     @Binding var basicColor: Color?
     @Binding var darkColor: Color?
 
     var body: some View {
-        basicColor
+        lightColor
             .ignoresSafeArea()
             .overlay(
                 ZStack {
@@ -48,10 +49,10 @@ struct BreathView: View {
                         Spacer()
                         ZStack {
                             ZStack {
-                                Circle().fill(darkColor!.opacity(0.25)).frame(width: 190, height: 190).scaleEffect(self.animate ? 1.8 : 0.9)
-                                Circle().fill(darkColor!.opacity(0.35)).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.4 : 0.9)
-                                Circle().fill(darkColor!.opacity(0.45)).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.7 : 0.9)
-                                Circle().fill(darkColor!).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.2 : 0.9)
+                                Circle().fill(basicColor!.opacity(0.25)).frame(width: 190, height: 190).scaleEffect(self.animate ? 1.8 : 0.9)
+                                Circle().fill(basicColor!.opacity(0.35)).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.4 : 0.9)
+                                Circle().fill(basicColor!.opacity(0.45)).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.7 : 0.9)
+                                Circle().fill(basicColor!).frame(width: 170, height: 170).scaleEffect(self.animate ? 1.2 : 0.9)
                             }
                             .animation(.easeInOut(duration: 4.95).repeat(while: animate), value: animate)
                             
@@ -75,7 +76,7 @@ struct BreathView: View {
                                     .fontWeight(.bold)
                             }
                             .frame(width: 230, height: 160, alignment: .center)
-                            .background(basicColor)
+                            .background(lightColor)
                             .clipShape(Circle())
                             .onAppear() {
                                 self.stopTimer()

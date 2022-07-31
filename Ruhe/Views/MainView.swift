@@ -12,6 +12,7 @@ struct MainView: View {
     @State private var openBreath: Bool = false
     @State private var openBubbles: Bool = false
     @State private var openSettings: Bool = false
+    @Binding var extraLightColor: Color?
     @Binding var lightColor: Color?
     @Binding var basicColor: Color?
     @Binding var darkColor: Color?
@@ -35,7 +36,7 @@ struct MainView: View {
                             .padding(.trailing, 15)
                             .padding(.top, 15)
                             .fullScreenCover(isPresented: $openSettings, content: {
-                                SettingsView(lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
+                                SettingsView(extraLightColor: $extraLightColor, lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
                             })
                         }
                         Spacer()
@@ -56,7 +57,7 @@ struct MainView: View {
                             }
                             .buttonStyle(MainButton())
                             .fullScreenCover(isPresented: $openChat, content: {
-                                ChatView(lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
+                                ChatView(extraLightColor: $extraLightColor, lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
                             })
                             Button {
                                 self.openBreath = true
@@ -66,7 +67,7 @@ struct MainView: View {
                             }
                             .buttonStyle(MainButton())
                             .fullScreenCover(isPresented: $openBreath, content: {
-                                BreathView(lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
+                                BreathView(extraLightColor: $extraLightColor, lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
                             })
                         }
                         .padding(.top, 90)
@@ -78,7 +79,7 @@ struct MainView: View {
                         }
                         .buttonStyle(MainButton())
                         .fullScreenCover(isPresented: $openBubbles, content: {
-                            BubblesView(lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
+                            BubblesView(extraLightColor: $extraLightColor, lightColor: $lightColor, basicColor: $basicColor, darkColor: $darkColor)
                         })
                     }
                 }

@@ -10,14 +10,15 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State private var colorsArray = [Color.mint, Color.purple, Color.orange, Color.green]
+    @State private var colorsArray = [Color.mint, Color.purple, Color.green, Color.orange, Color.anotherGreen]
+    @Binding var extraLightColor: Color?
     @Binding var lightColor: Color?
     @Binding var basicColor: Color?
     @Binding var darkColor: Color?
     var colorData = ColorData()
 
     var body: some View {
-        basicColor
+        lightColor
             .ignoresSafeArea()
             .overlay(
                 ZStack {
@@ -45,8 +46,9 @@ struct SettingsView: View {
                         HStack {
                             ForEach(0..<colorsArray.endIndex, id:\.self) { item in
                                     Button {
-                                        colorData.saveColors(lightColor: colorsArray[item]["light"]!, basicColor: colorsArray[item]["basic"]!, darkColor: colorsArray[item]["dark"]!)
+                                        colorData.saveColors(extraLightColor: colorsArray[item]["extraLight"]!, lightColor: colorsArray[item]["light"]!, basicColor: colorsArray[item]["basic"]!, darkColor: colorsArray[item]["dark"]!)
                                         let colors = colorData.loadColors()
+                                        extraLightColor = colors["extraLight"]
                                         lightColor = colors["light"]
                                         basicColor = colors["basic"]
                                         darkColor = colors["dark"]

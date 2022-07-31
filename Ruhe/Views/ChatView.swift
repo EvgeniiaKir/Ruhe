@@ -23,12 +23,13 @@ struct ChatView: View {
         "Let's dig deeper, why do you think like that?",
         "I feel you. Why does it bother you so much?"
     ]
+    @Binding var extraLightColor: Color?
     @Binding var lightColor: Color?
     @Binding var basicColor: Color?
     @Binding var darkColor: Color?
     
     var body: some View {
-        basicColor
+        lightColor
             .ignoresSafeArea()
             .overlay(
                 ZStack {
@@ -54,7 +55,7 @@ struct ChatView: View {
                             .fontWeight(.bold)
                             .padding(.top, 10)
                         ZStack{
-                            lightColor
+                            extraLightColor
                                 .cornerRadius(20)
                             ScrollView {
                                 ScrollViewReader{ value in
@@ -78,7 +79,7 @@ struct ChatView: View {
                         HStack(spacing: 5) {
                             if #available(iOS 15.0, *) {
                                 ZStack {
-                                    lightColor
+                                    extraLightColor
                                         .cornerRadius(10)
                                     TextField("Type here...", text: $inputText)
                                         .frame(width: 290)
@@ -98,7 +99,7 @@ struct ChatView: View {
                                 .frame(width: 290, height: 35)
                             } else {
                                 ZStack {
-                                    lightColor
+                                    extraLightColor
                                         .cornerRadius(10)
                                     TextField("Type here...", text: $inputText)
                                         .frame(width: 250)
